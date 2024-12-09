@@ -25,9 +25,10 @@ class NoteCollectionViewCell: UICollectionViewCell {
     //MARK: Private Methods
     private func setupViews() {
         noteLabel.backgroundColor = .lightGray
+        noteLabel.numberOfLines = 3
         addSubview(noteLabel)
     }
     func configure(with noteTitle: String) {
-        noteLabel.text = noteTitle
+        noteLabel.text = noteTitle.isEmpty ? "Untitled Note" : noteTitle
     }
 }

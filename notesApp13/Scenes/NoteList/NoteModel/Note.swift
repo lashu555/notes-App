@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Note{
+struct Note: Codable{
     var id: UUID
     var title: String
     var body: String
@@ -20,6 +20,4 @@ struct Note{
         self.createdAt = createdAt
         self.editedAt = editedAt
     }
-    
-    
 }

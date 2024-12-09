@@ -9,21 +9,41 @@ import Foundation
 
 struct NoteDataSource {
     static var shared = NoteDataSource()
-    var notes = [
-        Note(id: UUID(), title: "Grocery ListLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.", body: "Milk, eggs, bread, cheese, apples", createdAt: Date()),
-        Note(id: UUID(), title: "Meeting Notes", body: "Discuss Q1 project timeline and budget", createdAt: Date()),
-        Note(id: UUID(), title: "Weekend Plans", body: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.", createdAt: Date())
-    ]
+    private init() {
+        let savedNotes = NoteStorage.shared.loadNotes()
+        if savedNotes.isEmpty {
+            self.notes = [
+                Note(id: UUID(), title: "Grocery List", body: "Milk, eggs, bread, cheese, apples", createdAt: Date()),
+                Note(id: UUID(), title: "Meeting Notes", body: "Discuss Q1 project timeline and budget", createdAt: Date()),
+                Note(id: UUID(), title: "Weekend Plans", body: "Plan for hiking and movie night", createdAt: Date())
+            ]
+        } else {
+            self.notes = savedNotes
+        }
+    }
+
+    var notes: [Note] {
+            didSet {
+                NoteStorage.shared.saveNotes(notes)
+            }
+        }
     mutating func editedNote(id: UUID, title: String, body: String, editedAt: Date) {
         DispatchQueue.main.async {
-            for (index, note) in NoteDataSource.shared.notes.enumerated() {
-                if note.id == id {
-                    NoteDataSource.shared.notes[index].title = title
-                    NoteDataSource.shared.notes[index].body = body
-                    NoteDataSource.shared.notes[index].createdAt = editedAt
-                    print("did update note")
-                    break
-                }
+            var notes = NoteDataSource.shared.notes
+            if let index = notes.firstIndex(where: { $0.id == id }) {
+                var updatedNote = notes[index]
+                updatedNote.title = title
+                updatedNote.body = body
+                updatedNote.createdAt = editedAt
+                notes[index] = updatedNote
+                notes.remove(at: index)
+                notes.insert(updatedNote, at: 0)
+                NoteDataSource.shared.notes = notes
+                print("Note updated successfully")
+            } else {
+                print("Note with ID \(id) not found")
             }
-        }}
+        }
+    }
+
 }
