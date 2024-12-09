@@ -14,7 +14,7 @@
 		8C796CDF2D0715A800DD0B12 /* Exceptions for "notesApp13" folder in "notesApp13" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				SupportingFiles/Info.plist,
 			);
 			target = 8C796CCC2D0715A600DD0B12 /* notesApp13 */;
 		};
@@ -147,10 +147,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CHC8JDRJ4U;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = notesApp13/Info.plist;
+				INFOPLIST_FILE = notesApp13/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = NoteList;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -175,10 +175,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CHC8JDRJ4U;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = notesApp13/Info.plist;
+				INFOPLIST_FILE = notesApp13/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = NoteList;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
