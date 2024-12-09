@@ -73,7 +73,7 @@ extension NoteListViewController: UICollectionViewDataSource {
 //MARK: - extensions 3/3 UICollectionViewDelegateFlowLayout
 extension NoteListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = 110.0
+        let cellWidth = 165
         return CGSize(width: cellWidth, height: cellWidth)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

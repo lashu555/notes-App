@@ -24,7 +24,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     }
     //MARK: Private Methods
     private func setupViews() {
-        noteLabel.backgroundColor = .lightGray
+        noteLabel.backgroundColor = .systemYellow
         noteLabel.numberOfLines = 3
         addSubview(noteLabel)
     }
