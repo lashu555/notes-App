@@ -24,8 +24,10 @@ class NoteCollectionViewCell: UICollectionViewCell {
     }
     //MARK: Private Methods
     private func setupViews() {
-        noteLabel.backgroundColor = .systemYellow
         noteLabel.numberOfLines = 3
+        noteLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        noteLabel.textColor = .darkText
+        noteLabel.textAlignment = .left
         addSubview(noteLabel)
     }
     func configure(with noteTitle: String) {

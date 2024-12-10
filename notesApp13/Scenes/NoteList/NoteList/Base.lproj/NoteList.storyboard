@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Note List View Controller-->
+        <!--Notes-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="NoteListViewController" customModule="notesApp13" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,7 +32,7 @@
                                 <cells/>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="count notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ckl-Lg-nvj">
-                                <rect key="frame" x="32" y="161" width="91" height="21"/>
+                                <rect key="frame" x="32.666666666666664" y="161" width="90.333333333333343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -42,13 +42,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5b1-yT-zZU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="SCm-sN-Kq7"/>
-                            <constraint firstItem="Ckl-Lg-nvj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="SIz-aF-6Pu"/>
+                            <constraint firstItem="Ckl-Lg-nvj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SIz-aF-6Pu"/>
+                            <constraint firstItem="5b1-yT-zZU" firstAttribute="top" secondItem="Ckl-Lg-nvj" secondAttribute="bottom" constant="8" id="b6q-UQ-PT1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ckl-Lg-nvj" secondAttribute="trailing" constant="270" id="cE7-Ns-RQK"/>
                             <constraint firstItem="5b1-yT-zZU" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ccO-jy-yXW"/>
                             <constraint firstItem="Ckl-Lg-nvj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="dBS-yy-KVP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ckl-Lg-nvj" secondAttribute="trailing" symbolic="YES" id="w4C-aH-VhO"/>
+                            <constraint firstItem="Ckl-Lg-nvj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="f3o-lo-DYK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="si3-Xn-ZJh"/>
+                    <navigationItem key="navigationItem" title="Notes" style="browser" id="si3-Xn-ZJh"/>
                     <connections>
                         <outlet property="noteCollection" destination="5b1-yT-zZU" id="hvd-Gm-la3"/>
                         <outlet property="notesCountLabel" destination="Ckl-Lg-nvj" id="gf8-11-XQh"/>
