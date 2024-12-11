@@ -56,9 +56,6 @@ class NoteListViewController: UIViewController {
 
 //MARK: - extensions 1/3 UICollectionViewDelegate
 extension NoteListViewController: UICollectionViewDelegate {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 12
-    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         moveToNote(note: NoteDataSource.shared.notes[indexPath.row])
     }
