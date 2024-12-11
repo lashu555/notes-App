@@ -20,7 +20,10 @@ class NoteCollectionViewCell: UICollectionViewCell {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        noteLabel.frame = bounds
+        let padding: CGFloat = 8
+        let labelWidth = bounds.width - 2 * padding
+        let labelHeight = noteLabel.sizeThatFits(CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)).height
+        noteLabel.frame = CGRect(x: padding, y: padding, width: labelWidth, height: labelHeight)
     }
     //MARK: Private Methods
     private func setupViews() {
