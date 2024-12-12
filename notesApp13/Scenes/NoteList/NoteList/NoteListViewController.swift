@@ -18,6 +18,7 @@ class NoteListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNote))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(addNote))
         setUpNoteCollection()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +69,7 @@ extension NoteListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "noteCell", for: indexPath) as! NoteCollectionViewCell
-        cell.configure(with: NoteDataSource.shared.notes[indexPath.row].title)
+        cell.configure(with: NoteDataSource.shared.notes[indexPath.row].getTitle())
         cell.translatesAutoresizingMaskIntoConstraints = false
         cell.layer.cornerRadius = 12
         cell.layer.shadowColor = UIColor.black.cgColor
@@ -78,13 +79,12 @@ extension NoteListViewController: UICollectionViewDataSource {
         cell.backgroundColor = .white
         return cell
     }
-    
 }
 //MARK: - extensions 3/3 UICollectionViewDelegateFlowLayout
 extension NoteListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = 165
+        let cellWidth = 110.0
         return CGSize(width: cellWidth, height: cellWidth)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

@@ -28,19 +28,19 @@ class NoteViewController: UIViewController {
     
     //MARK: private Methods
     private func setUpNote(){
-        createdAtLabel.text = "Created at \(note?.createdAt ?? Date())"
+        createdAtLabel.text = "Created at \(note?.getCreatedAt() ?? Date())"
         createdAtLabel.clipsToBounds = true
-        titleField.text = note?.title
-        bodyField.text = note?.body
+        titleField.text = note?.getTitle()
+        bodyField.text = note?.getBody()
     }
     
     private func deleteNote(){
-        guard let id = note?.id else { return }
-        NoteDataSource.shared.notes.removeAll(where: { $0.id == id })
+        guard let id = note?.getId() else { return }
+        NoteDataSource.shared.notes.removeAll(where: { $0.getId() == id })
         navigationController?.popViewController(animated: true)
     }
     private func editNote() {
-        guard let noteId = note?.id else { return }
+        guard let noteId = note?.getId() else { return }
         NoteDataSource.shared.editedNote(
             id: noteId,
             title: titleField.text ?? "",
@@ -57,7 +57,7 @@ class NoteViewController: UIViewController {
        noteCopy = note
     }
     private func checkIfEditedNote(noteCopy: Note) -> Bool{
-        if noteCopy.title != titleField?.text || noteCopy.body != bodyField?.text{
+        if noteCopy.getTitle() != titleField?.text || noteCopy.getBody() != bodyField?.text{
             return true
         }
         return false

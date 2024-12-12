@@ -27,23 +27,5 @@ struct NoteDataSource {
                 NoteStorage.shared.saveNotes(notes)
             }
         }
-    mutating func editedNote(id: UUID, title: String, body: String, editedAt: Date) {
-        DispatchQueue.main.async {
-            var notes = NoteDataSource.shared.notes
-            if let index = notes.firstIndex(where: { $0.id == id }) {
-                var updatedNote = notes[index]
-                updatedNote.title = title
-                updatedNote.body = body
-                updatedNote.createdAt = editedAt
-                notes[index] = updatedNote
-                notes.remove(at: index)
-                notes.insert(updatedNote, at: 0)
-                NoteDataSource.shared.notes = notes
-                print("Note updated successfully")
-            } else {
-                print("Note with ID \(id) not found")
-            }
-        }
-    }
 
 }
