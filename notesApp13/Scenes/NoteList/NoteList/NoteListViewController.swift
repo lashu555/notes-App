@@ -69,7 +69,7 @@ extension NoteListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "noteCell", for: indexPath) as! NoteCollectionViewCell
-        cell.configure(with: NoteDataSource.shared.notes[indexPath.row].getTitle())
+        cell.configure(with: NoteDataSource.shared.notes[indexPath.row].title)
         cell.translatesAutoresizingMaskIntoConstraints = false
         cell.layer.cornerRadius = 12
         cell.layer.shadowColor = UIColor.black.cgColor

@@ -7,12 +7,13 @@
 
 import Foundation
 
-struct Note: Codable{
-    fileprivate var id: UUID
-    fileprivate var title: String
-    fileprivate var body: String
-    fileprivate var createdAt: Date
-    fileprivate var editedAt: Date?
+struct Note: Codable {
+    private(set) var id: UUID
+    private(set) var title: String
+    private(set) var body: String
+    private(set) var createdAt: Date
+    private(set) var editedAt: Date?
+    
     init(id: UUID, title: String, body: String, createdAt: Date, editedAt: Date? = nil) {
         self.id = id
         self.title = title
@@ -20,36 +21,27 @@ struct Note: Codable{
         self.createdAt = createdAt
         self.editedAt = editedAt
     }
-    func getId() -> UUID {
-        return id
-    }
-    func getTitle() -> String {
-        return title
-    }
-    func getBody() -> String {
-        return body
-    }
-    func getCreatedAt() -> Date {
-        return createdAt
+    
+    mutating func update(title: String, body: String, editedAt: Date) {
+        self.title = title
+        self.body = body
+        self.editedAt = editedAt
     }
 }
-extension NoteDataSource{
-    mutating func editedNote(id: UUID, title: String, body: String, editedAt: Date) {
-        DispatchQueue.main.async {
-            var notes = NoteDataSource.shared.notes
-            if let index = notes.firstIndex(where: { $0.id == id }) {
-                var updatedNote = notes[index]
-                updatedNote.title = title
-                updatedNote.body = body
-                updatedNote.createdAt = editedAt
-                notes[index] = updatedNote
-                notes.remove(at: index)
-                notes.insert(updatedNote, at: 0)
-                NoteDataSource.shared.notes = notes
-                print("Note updated successfully")
-            } else {
-                print("Note with ID \(id) not found")
-            }
+
+extension NoteDataSource {
+    func editedNote(id: UUID, title: String, body: String, editedAt: Date) {
+        guard let index = NoteDataSource.shared.notes.firstIndex(where: { $0.id == id }) else {
+            print("Note with ID \(id) not found")
+            return
         }
+
+        var note = NoteDataSource.shared.notes[index]
+        note.update(title: title, body: body, editedAt: editedAt)
+        NoteDataSource.shared.notes[index] = note
+        
+        NoteDataSource.shared.notes.sort(by: { $0.editedAt ?? $0.createdAt > $1.editedAt ?? $1.createdAt })
+        
+        print("Note updated successfully")
     }
 }

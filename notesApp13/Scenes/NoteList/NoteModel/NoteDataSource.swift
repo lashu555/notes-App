@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NoteDataSource {
+class NoteDataSource {
     static var shared = NoteDataSource()
     private init() {
         let savedNotes = NoteStorage.shared.loadNotes()
