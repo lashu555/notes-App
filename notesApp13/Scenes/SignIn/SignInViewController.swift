@@ -13,11 +13,23 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var logInButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        emailTextField.text = "lashu@icloud.com"
+        passwordTextField.text = "meowMeow"
         // Do any additional setup after loading the view.
     }
     
     @IBAction func didTapLogIn(_ sender: Any) {
+        guard let inputEmail = emailTextField.text, !inputEmail.isEmpty,
+        let inputPassword = passwordTextField.text, !inputPassword.isEmpty
+        else {
+            return
+        }
+        let maybeUser = User(name: "", email: inputEmail, password: inputPassword)
+        if UserDataSource.shared.users.contains(where: { maybeUser == $0 }) {
+            UserAuthorization.shared.isAuthorized = true
+            tabBarController?.viewDidLoad()
+            tabBarController?.selectedIndex = 0
+        }
     }
     
     /*
