@@ -20,19 +20,30 @@ class NoteListViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNote))
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(addNote))
         setUpNoteCollection()
+        self.tabBarItem = UITabBarItem(
+            title: "Notes",
+            image: UIImage(systemName: "note.text"),
+            tag: 0
+        )
+        
     }
     override func viewWillAppear(_ animated: Bool) {
+        let noteCount = NoteDataSource.shared.notes.count
+        if noteCount != notesCountLabel.text?.count {
+            notesCountLabel.text = "\(noteCount == 1 ? "\(noteCount) note" : "\(noteCount) notes")"
+        }
         DispatchQueue.main.async {
             self.noteCollection.reloadData()
-            let noteCount = NoteDataSource.shared.notes.count
-            self.notesCountLabel.text = "\(noteCount == 1 ? "\(noteCount) note" : "\(noteCount) notes")"
         }
     }
+        
     private func getSectionCount(sections: [String: [Note]]) -> Int{
         return sections.keys.count
     }
+    func setANewNavTitle(_ user: User){
+       navigationController?.title = "\(user.name)'s Notes"
+    }
     private func setUpNoteCollection(){
-        navigationController?.title = "Notes"
         noteCollection.delegate = self
         noteCollection.dataSource = self
         noteCollection.register(NoteCollectionViewCell.self, forCellWithReuseIdentifier: "noteCell")
@@ -40,7 +51,7 @@ class NoteListViewController: UIViewController {
         notesCountLabel.text = "\(NoteDataSource.shared.notes.count) notes"
     }
     @objc func addNote(){
-        let newNote = Note(id: UUID(), title: "", body: "", createdAt: Date())
+        let newNote = Note(id: UUID(), title: "", author: UserDataSource.shared.users.first!, body: "", createdAt: Date())
         NoteDataSource.shared.notes.append(newNote)
         moveToNote(note: newNote)
         

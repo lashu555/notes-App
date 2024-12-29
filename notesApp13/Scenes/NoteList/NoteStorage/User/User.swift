@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User{
+struct User: Codable{
     private(set) var name: String
     private(set) var email: String
     private var password: String

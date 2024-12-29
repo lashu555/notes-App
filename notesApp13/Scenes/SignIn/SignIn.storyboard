@@ -11,41 +11,57 @@
         <!--Sign In View Controller-->
         <scene sceneID="Wjx-TM-3MY">
             <objects>
-                <viewController storyboardIdentifier="SignInID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="696-PO-xfO" customClass="SignInViewController" customModule="lashu_10" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="696-PO-xfO" customClass="SignInViewController" customModule="notesApp13" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aIk-xk-kdN">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="SaU-gx-GKU">
-                                <rect key="frame" x="15" y="169" width="363" height="200"/>
+                                <rect key="frame" x="15" y="169" width="363" height="400"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="7z7-Jf-sAY">
-                                        <rect key="frame" x="0.0" y="0.0" width="363" height="93"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="363" height="124"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovm-cF-fvr">
-                                                <rect key="frame" x="0.0" y="0.0" width="363" height="43.666666666666664"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovm-cF-fvr">
+                                                <rect key="frame" x="0.0" y="0.0" width="363" height="59"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Your E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grO-VX-Rlm">
-                                                <rect key="frame" x="0.0" y="49.666666666666657" width="363" height="43.333333333333343"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grO-VX-Rlm">
+                                                <rect key="frame" x="0.0" y="65" width="363" height="59"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="6B0-9N-aYh">
+                                        <rect key="frame" x="0.0" y="138" width="363" height="124"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHN-sn-L5o">
+                                                <rect key="frame" x="0.0" y="0.0" width="363" height="59"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Your E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6WA-ex-Wxd">
+                                                <rect key="frame" x="0.0" y="65" width="363" height="59"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="HUa-zT-NiK">
-                                        <rect key="frame" x="0.0" y="107" width="363" height="93"/>
+                                        <rect key="frame" x="0.0" y="276" width="363" height="124"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uU-Fx-My2">
-                                                <rect key="frame" x="0.0" y="0.0" width="363" height="43.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="363" height="59"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dDH-b7-zbZ">
-                                                <rect key="frame" x="0.0" y="49.666666666666686" width="363" height="43.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="65" width="363" height="59"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -53,11 +69,11 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="92I-2P-QBi"/>
+                                    <constraint firstAttribute="height" constant="400" id="92I-2P-QBi"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyX-zX-Lmj">
-                                <rect key="frame" x="141" y="422" width="111" height="50"/>
+                                <rect key="frame" x="141" y="622" width="111" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Exg-2J-KXe"/>
                                     <constraint firstAttribute="width" constant="111" id="GbJ-Zm-rZp"/>
@@ -83,8 +99,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="grO-VX-Rlm" id="iuW-9W-A3X"/>
+                        <outlet property="emailTextField" destination="6WA-ex-Wxd" id="POe-ga-I8e"/>
                         <outlet property="logInButton" destination="jyX-zX-Lmj" id="twq-Fx-4Rt"/>
+                        <outlet property="nameTextField" destination="grO-VX-Rlm" id="mVG-g1-Uwl"/>
                         <outlet property="passwordTextField" destination="dDH-b7-zbZ" id="zpG-Fg-SMi"/>
                     </connections>
                 </viewController>

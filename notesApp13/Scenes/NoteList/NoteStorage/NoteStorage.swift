@@ -17,11 +17,11 @@ class NoteStorage {
             UserDefaults.standard.set(encoded, forKey: storageKey)
         }
     }
-    func loadNotes() -> [Note] {
+    func loadNotes(_ user: User) -> [Note] {
             guard let data = UserDefaults.standard.data(forKey: storageKey),
                   let decoded = try? JSONDecoder().decode([Note].self, from: data) else {
                 return []
             }
-            return decoded
+        return decoded.filter { $0.author == user }
         }
 }
