@@ -7,18 +7,27 @@
 
 import UIKit
 
-class NoteListViewController: UIViewController {
+class NoteListViewController: UIViewController, UINavigationControllerDelegate {
     //MARK: Outlets
     @IBOutlet weak var noteCollection: UICollectionView!
     @IBOutlet weak var viewFlowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var notesCountLabel: UILabel!
     //MARK: Properties
     var sections : [String: [Note]] = [:]
+    let gradientLayer = CAGradientLayer()
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.delegate = self
+        noteCollection.backgroundColor = .systemBackground.withAlphaComponent(0)
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [UIColor.systemBackground.withAlphaComponent(0.5).cgColor,
+                                UIColor.systemGray5.cgColor,
+                                UIColor.systemGray6.cgColor]
+        view.layer.insertSublayer(gradientLayer, at: 0)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNote))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(addNote))
+        navigationItem.rightBarButtonItem?.tintColor = .systemCyan
+        //        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(addNote))
         setUpNoteCollection()
         self.tabBarItem = UITabBarItem(
             title: "Notes",
@@ -28,6 +37,7 @@ class NoteListViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.backgroundColor = .link.withAlphaComponent(0)
         let noteCount = NoteDataSource.shared.notes.count
         if noteCount != notesCountLabel.text?.count {
             notesCountLabel.text = "\(noteCount == 1 ? "\(noteCount) note" : "\(noteCount) notes")"
@@ -36,12 +46,19 @@ class NoteListViewController: UIViewController {
             self.noteCollection.reloadData()
         }
     }
-        
+    //MARK: methods
     private func getSectionCount(sections: [String: [Note]]) -> Int{
         return sections.keys.count
     }
     func setANewNavTitle(_ user: User){
-       navigationController?.title = "\(user.name)'s Notes"
+        navigationController?.title = "\(user.name)'s Notes"
+    }
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> (any UIViewControllerAnimatedTransitioning)? {
+        if operation == .push {
+            return CustomPush()
+        } else {
+            return nil
+        }
     }
     private func setUpNoteCollection(){
         noteCollection.delegate = self
@@ -69,8 +86,42 @@ class NoteListViewController: UIViewController {
 //MARK: - extensions 1/3 UICollectionViewDelegate
 extension NoteListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        moveToNote(note: NoteDataSource.shared.notes[indexPath.row])
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            
+            UIView.animate(
+                withDuration: 0.2,
+                delay: 0.1,
+                usingSpringWithDamping: 0.5,
+                initialSpringVelocity: 0.5,
+                options: .curveEaseIn,
+                animations: {
+                    cell.transform = CGAffineTransform(scaleX: 0.96, y: 0.96)
+                },
+                completion: { finished in
+                    UIView.animate(
+                        withDuration: 0.2,
+                        delay: 0.0,
+                        usingSpringWithDamping: 0.5,
+                        initialSpringVelocity: 1.0,
+                        options: .curveEaseOut,
+                        animations: {
+                            cell.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                        },
+                        completion: { finished in
+                            self.moveToNote(note: NoteDataSource.shared.notes[indexPath.row])
+                            
+                            UIView.animate(
+                                withDuration: 0.2,
+                                delay: 0.3,
+                                options: .curveEaseOut,
+                                animations: {
+                                    cell.transform = .identity
+                                })
+                        })
+                })
+        }
     }
+    
 }
 //MARK: - extensions 2/3 UICollectionViewDataSource
 extension NoteListViewController: UICollectionViewDataSource {

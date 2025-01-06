@@ -17,8 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5b1-yT-zZU">
-                                <rect key="frame" x="16" y="190" width="361" height="628"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="16" y="216" width="361" height="628"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="628" id="G9R-c7-X0R"/>
                                     <constraint firstAttribute="width" constant="361" id="wAv-2S-OyC"/>
@@ -32,7 +31,7 @@
                                 <cells/>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="count notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ckl-Lg-nvj">
-                                <rect key="frame" x="32.666666666666664" y="161" width="90.333333333333343" height="21"/>
+                                <rect key="frame" x="32.666666666666664" y="187" width="90.333333333333343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="ZXb-o6-HWI"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90.329999999999998" id="xrK-us-NKX"/>
@@ -41,17 +40,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3j-Jf-lrK">
+                                <rect key="frame" x="0.0" y="147" width="393" height="20"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="kdd-YT-8Yr"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
+                            <constraint firstItem="x3j-Jf-lrK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-8" id="1wd-6U-gQY"/>
+                            <constraint firstItem="Ckl-Lg-nvj" firstAttribute="top" secondItem="x3j-Jf-lrK" secondAttribute="bottom" constant="20" id="Jwj-b4-59z"/>
                             <constraint firstItem="5b1-yT-zZU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="SCm-sN-Kq7"/>
                             <constraint firstItem="Ckl-Lg-nvj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SIz-aF-6Pu"/>
+                            <constraint firstItem="x3j-Jf-lrK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="UyS-bP-KJg"/>
                             <constraint firstItem="5b1-yT-zZU" firstAttribute="top" secondItem="Ckl-Lg-nvj" secondAttribute="bottom" constant="8" id="b6q-UQ-PT1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ckl-Lg-nvj" secondAttribute="trailing" constant="270" id="cE7-Ns-RQK"/>
-                            <constraint firstItem="5b1-yT-zZU" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ccO-jy-yXW"/>
-                            <constraint firstItem="Ckl-Lg-nvj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="dBS-yy-KVP"/>
-                            <constraint firstItem="Ckl-Lg-nvj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="f3o-lo-DYK"/>
+                            <constraint firstItem="5b1-yT-zZU" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ccO-jy-yXW"/>
+                            <constraint firstItem="x3j-Jf-lrK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dtU-gd-5jY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Notes" style="browser" id="si3-Xn-ZJh"/>
@@ -73,6 +81,13 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="zlq-yi-rwb">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textShadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -85,8 +100,11 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

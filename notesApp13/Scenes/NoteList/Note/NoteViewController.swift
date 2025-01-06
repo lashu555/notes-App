@@ -18,7 +18,7 @@ class NoteViewController: UIViewController {
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBar.backgroundColor = .systemBackground
         createCopyForChecking()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteNoteSelector))
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editNoteSelector))
