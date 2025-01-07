@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5b1-yT-zZU">
-                                <rect key="frame" x="16" y="216" width="361" height="628"/>
+                                <rect key="frame" x="16" y="201" width="361" height="628"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="628" id="G9R-c7-X0R"/>
                                     <constraint firstAttribute="width" constant="361" id="wAv-2S-OyC"/>
@@ -31,7 +31,7 @@
                                 <cells/>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="count notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ckl-Lg-nvj">
-                                <rect key="frame" x="32.666666666666664" y="187" width="90.333333333333343" height="21"/>
+                                <rect key="frame" x="32.666666666666664" y="172" width="90.333333333333343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="ZXb-o6-HWI"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90.329999999999998" id="xrK-us-NKX"/>
@@ -41,10 +41,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3j-Jf-lrK">
-                                <rect key="frame" x="0.0" y="147" width="393" height="20"/>
+                                <rect key="frame" x="0.0" y="147" width="393" height="5"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="kdd-YT-8Yr"/>
+                                    <constraint firstAttribute="height" constant="5" id="kdd-YT-8Yr"/>
                                 </constraints>
                             </view>
                         </subviews>
