@@ -28,6 +28,13 @@ class NoteCollectionViewCell: UICollectionViewCell {
         let labelWidth = bounds.width - 2 * padding
         let labelHeight = noteLabel.sizeThatFits(CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)).height
         noteLabel.frame = CGRect(x: padding, y: padding, width: labelWidth, height: labelHeight)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.layer.cornerRadius = 12
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.layer.shadowRadius = 4
+        self.layer.shadowOpacity = 0.1
+        self.backgroundColor = .white
     }
 
     // MARK: Private Methods

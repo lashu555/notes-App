@@ -30,20 +30,3 @@ struct Note: Codable {
         self.editedAt = editedAt
     }
 }
-
-extension NoteDataSource {
-    func editedNote(id: UUID, title: String, body: String, editedAt: Date) {
-        guard let index = NoteDataSource.shared.notes.firstIndex(where: { $0.id == id }) else {
-            print("Note with ID \(id) not found")
-            return
-        }
-
-        var note = NoteDataSource.shared.notes[index]
-        note.update(title: title, body: body, editedAt: editedAt)
-        NoteDataSource.shared.notes[index] = note
-        
-        NoteDataSource.shared.notes.sort(by: { $0.editedAt ?? $0.createdAt > $1.editedAt ?? $1.createdAt })
-        
-        print("Note updated successfully")
-    }
-}

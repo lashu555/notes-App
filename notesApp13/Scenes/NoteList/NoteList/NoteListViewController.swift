@@ -47,12 +47,6 @@ class NoteListViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     //MARK: methods
-    private func getSectionCount(sections: [String: [Note]]) -> Int{
-        return sections.keys.count
-    }
-    func setANewNavTitle(_ user: User){
-        navigationController?.title = "\(user.name)'s Notes"
-    }
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> (any UIViewControllerAnimatedTransitioning)? {
         if operation == .push {
             return CustomPush()
@@ -132,13 +126,6 @@ extension NoteListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "noteCell", for: indexPath) as! NoteCollectionViewCell
         cell.configure(with: NoteDataSource.shared.notes[indexPath.row].title)
-        cell.translatesAutoresizingMaskIntoConstraints = false
-        cell.layer.cornerRadius = 12
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 2)
-        cell.layer.shadowRadius = 4
-        cell.layer.shadowOpacity = 0.1
-        cell.backgroundColor = .white
         return cell
     }
 }
