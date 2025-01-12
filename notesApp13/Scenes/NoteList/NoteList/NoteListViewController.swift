@@ -13,7 +13,6 @@ class NoteListViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var viewFlowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var notesCountLabel: UILabel!
     //MARK: Properties
-    var sections : [String: [Note]] = [:]
     let gradientLayer = CAGradientLayer()
     //MARK: Lifecycle
     override func viewDidLoad() {
