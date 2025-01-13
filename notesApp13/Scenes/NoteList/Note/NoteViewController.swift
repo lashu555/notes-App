@@ -28,10 +28,13 @@ class NoteViewController: UIViewController {
     
     //MARK: private Methods
     private func setUpNote(){
-        createdAtLabel.text = "Created at \(note?.createdAt ?? Date())"
+        if let note {
+            let formattedDate = note.createdAt.formatted()
+            createdAtLabel.text = "Created at \(formattedDate)"
+            titleField.text = note.title
+            bodyField.text = note.body
+        }
         createdAtLabel.clipsToBounds = true
-        titleField.text = note?.title
-        bodyField.text = note?.body
     }
     
     private func deleteNote(){

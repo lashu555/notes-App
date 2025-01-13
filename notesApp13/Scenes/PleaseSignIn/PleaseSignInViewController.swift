@@ -90,7 +90,7 @@ class PleaseSignInViewController: UIViewController {
         
     }
     @objc private func goToSignIn(){
-        
+        tabBarController?.selectedIndex = 1
     }
     /*
      // MARK: - Navigation

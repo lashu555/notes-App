@@ -59,6 +59,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+        self.tabBar.tintColor = .systemYellow
         updateTabBar()
     }
     @objc private func handleAuthorizationChange() {

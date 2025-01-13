@@ -94,16 +94,22 @@ class SettingsViewController: UIViewController {
         
         return sectionStack
     }
-    private func setUpSettingsButton(title: String, icon: String) -> UIButton{
+    private func setUpSettingsButton(title: String, icon: String) -> UIButton {
         var configuration = UIButton.Configuration.plain()
         configuration.title = title
         configuration.image = UIImage(systemName: icon)
         configuration.imagePlacement = .leading
         configuration.imagePadding = 8
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16)
-        configuration.baseForegroundColor = .label
+        configuration.baseForegroundColor = .gray
         
         let button = UIButton(configuration: configuration)
+        button.configurationUpdateHandler = { button in
+            var config = button.configuration
+            config?.baseForegroundColor = button.isHighlighted ? .red : .gray
+            button.configuration = config
+        }
+        
         button.backgroundColor = .secondarySystemGroupedBackground
         button.layer.cornerRadius = 10
         return button
